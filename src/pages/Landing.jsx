@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import FeatureCard from '../components/FeatureCard'
 const Landing = () => {
     return (
@@ -9,7 +10,7 @@ const Landing = () => {
                 <p className='text-gray-400 text-xl m-5'>Smart, simple, and reliable attendance for modern classrooms.</p>
             </div>
             <div>
-                <button className='bg-white rounded-xl text-black text-sm px-5 py-3 font-medium cursor-pointer hover:bg-neutral-200 transition-all'>Login</button>
+                <Link to="/login"><button className='bg-white rounded-xl text-black text-sm px-5 py-3 font-medium cursor-pointer hover:bg-neutral-200 transition-all'>Login</button></Link>
             </div>
             <div className='grid grid-cols-2 gap-5 w-200 k'>
                 <FeatureCard title={"Role-based dashboards"} description={"Admin, Mentor, and Student experiences tailored to their needs."} />
