@@ -88,7 +88,8 @@ export default function Navbar() {
                       src={user.image}
                       alt={user.name}
                       className="w-10 h-10 rounded-full object-cover"
-                    />) : (
+                    />
+                  ) : (
                     <div className="w-10 h-10 rounded-full bg-neutral-700 flex items-center justify-center text-xs font-bold">
                       {initials}
                     </div>

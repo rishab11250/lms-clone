@@ -1,23 +1,18 @@
-import React from 'react'
-import {Routes, Route, Link } from 'react-router-dom'
-import Landing from './pages/Landing.jsx'
-import Login from './pages/Login.jsx'
-import StudentDashboard from './pages/studentDashboard.jsx'
-import './App.css'
+import "./App.css";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import StudentDashboard from "./pages/studentDashboard";
 
 function App() {
-  
   return (
-    <>
-      <div className='bg-[rgb(12,12,12)] text-white text-center'>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/studentDashboard" element={<StudentDashboard />} />
-        </Routes>
-      </div>
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/student" element={<StudentDashboard />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;

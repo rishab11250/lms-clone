@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginDetails } from "../utils/auth";
-import StudentDashboard from "./studentDashboard";
 
 export default function Login() {
   const [role, setRole] = useState("Student");
@@ -22,7 +21,7 @@ export default function Login() {
         alert("Login failed. Please try again");
         return;
       }
-      navigate("/studentDashboard");
+      navigate("/student");
     }
   };
 
@@ -42,7 +41,7 @@ export default function Login() {
         <div className="p-6 pt-2">
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Role */}
-            <div className="space-y-2 text-left">
+            <div className="space-y-2">
               <label className="text-sm font-medium text-gray-200">Role</label>
 
               <div className="flex gap-2">
@@ -52,9 +51,10 @@ export default function Login() {
                     key={r}
                     onClick={() => setRole(r)}
                     className={`px-3 py-2 rounded-md border text-sm transition-colors
-                      ${role === r
-                        ? "bg-white text-black border-white"
-                        : "bg-transparent text-gray-300 border-white/10 hover:bg-white/5"
+                      ${
+                        role === r
+                          ? "bg-white text-black border-white"
+                          : "bg-transparent text-gray-300 border-white/10 hover:bg-white/5"
                       }
                     `}
                   >
@@ -65,7 +65,7 @@ export default function Login() {
             </div>
 
             {/* UID / Email */}
-            <div className="space-y-2 text-left">
+            <div className="space-y-2">
               <label className="text-sm font-medium text-gray-200">
                 {role === "Student" ? "University UID" : "Email"}
               </label>
@@ -84,7 +84,7 @@ export default function Login() {
             </div>
 
             {/* Password */}
-            <div className="space-y-2 text-left">
+            <div className="space-y-2">
               <label className="text-sm font-medium text-gray-200">
                 Password
               </label>
