@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, Settings } from "lucide-react";
 import { getInitials } from "../utils/getInitials";
-
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   const data = localStorage.getItem("user");
   const user = data ? JSON.parse(data) : null;
 
   const initials = getInitials(user?.name);
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 border-b border-neutral-800 bg-neutral-900/80 backdrop-blur supports-backdrop-filter:bg-neutral-900/60">
@@ -25,21 +28,49 @@ export default function Navbar() {
 
           {/* DESKTOP MENU */}
           <nav className="hidden md:flex items-center gap-1 ml-2">
-            <div className="px-3 py-2 rounded-md text-sm font-medium bg-neutral-800 text-white">
+            <Link
+              to="/student"
+              className={`px-3 py-2 rounded-md text-sm font-medium ${
+                isActive("/student")
+                  ? "bg-neutral-800 text-white"
+                  : "text-neutral-300 hover:bg-neutral-800 hover:text-white"
+              }`}
+            >
               Dashboard
-            </div>
+            </Link>
 
-            <div className="px-3 py-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">
+            <Link
+              to="/student/attendance"
+              className={`px-3 py-2 rounded-md text-sm font-medium ${
+                isActive("/student/attendance")
+                  ? "bg-neutral-800 text-white"
+                  : "text-neutral-300 hover:bg-neutral-800 hover:text-white"
+              }`}
+            >
               Attendance
-            </div>
+            </Link>
 
-            <div className="px-3 py-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">
+            <Link
+              to="/student/calendar"
+              className={`px-3 py-2 rounded-md text-sm font-medium ${
+                isActive("/student/calendar")
+                  ? "bg-neutral-800 text-white"
+                  : "text-neutral-300 hover:bg-neutral-800 hover:text-white"
+              }`}
+            >
               Calendar
-            </div>
+            </Link>
 
-            <div className="px-3 py-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">
+            <Link
+              to="/student/chat"
+              className={`px-3 py-2 rounded-md text-sm font-medium ${
+                isActive("/student/chat")
+                  ? "bg-neutral-800 text-white"
+                  : "text-neutral-300 hover:bg-neutral-800 hover:text-white"
+              }`}
+            >
               Chat
-            </div>
+            </Link>
 
             {/* MORE */}
             <div className="relative group">
@@ -47,23 +78,35 @@ export default function Navbar() {
                 More <ChevronDown size={16} />
               </button>
 
-              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-150 absolute left-0 mt-2 w-48 rounded-lg border border-neutral-800 bg-neutral-900 shadow-xl">
+              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-150 absolute left-0 mt-2 w-56 rounded-lg border border-neutral-800 bg-neutral-900 shadow-xl">
                 <div className="p-2 space-y-1">
-                  <div className="px-3 py-2 text-sm hover:bg-neutral-800 rounded">
+                  <Link
+                    to="/student/semester-attendance"
+                    className="block px-3 py-2 text-sm hover:bg-neutral-800 rounded"
+                  >
                     Semester Attendance
-                  </div>
+                  </Link>
 
-                  <div className="px-3 py-2 text-sm hover:bg-neutral-800 rounded">
+                  <Link
+                    to="/student/feedback"
+                    className="block px-3 py-2 text-sm hover:bg-neutral-800 rounded"
+                  >
                     Feedback
-                  </div>
+                  </Link>
 
-                  <div className="px-3 py-2 text-sm hover:bg-neutral-800 rounded">
+                  <Link
+                    to="/student/weekly-feedback"
+                    className="block px-3 py-2 text-sm hover:bg-neutral-800 rounded"
+                  >
                     Weekly Subject Feedback
-                  </div>
+                  </Link>
 
-                  <div className="px-3 py-2 text-sm hover:bg-neutral-800 rounded">
+                  <Link
+                    to="/student/apply-leave"
+                    className="block px-3 py-2 text-sm hover:bg-neutral-800 rounded"
+                  >
                     Apply Leave
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -103,13 +146,19 @@ export default function Navbar() {
 
               {/* MENU */}
               <div className="p-2">
-                <div className="w-full text-left text-sm px-3 py-2 rounded-md text-neutral-200 hover:bg-neutral-800 cursor-pointer">
+                <Link
+                  to="/student/profile"
+                  className="block w-full text-left text-sm px-3 py-2 rounded-md text-neutral-200 hover:bg-neutral-800"
+                >
                   View Profile
-                </div>
+                </Link>
 
-                <div className="w-full text-left text-sm px-3 py-2 rounded-md text-neutral-200 hover:bg-neutral-800 cursor-pointer">
+                <Link
+                  to="/logout"
+                  className="block w-full text-left text-sm px-3 py-2 rounded-md text-neutral-200 hover:bg-neutral-800"
+                >
                   Logout
-                </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -123,46 +172,92 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-
       {/* MOBILE MENU */}
       {open && (
         <div className="md:hidden border-b border-neutral-800 bg-neutral-900/95 backdrop-blur px-4 sm:px-6 lg:px-8 py-3">
           <div className="max-w-7xl mx-auto flex flex-col gap-1">
-            <div className="px-3 py-2 bg-neutral-800 rounded">Dashboard</div>
-
-            <div className="px-3 py-2 hover:bg-neutral-800 rounded">
+            <Link
+              to="/student"
+              className={`px-3 py-2 rounded ${
+                isActive("/student") ? "bg-neutral-800" : ""
+              }`}
+            >
+              Dashboard
+            </Link>
+            <Link
+              to="/student/attendance"
+              className={`px-3 py-2 rounded ${
+                isActive("/student/attendance") ? "bg-neutral-800" : ""
+              }`}
+            >
               Attendance
-            </div>
-
-            <div className="px-3 py-2 hover:bg-neutral-800 rounded">
+            </Link>
+            <Link
+              to="/student/calendar"
+              className={`px-3 py-2 rounded ${
+                isActive("/student/calendar") ? "bg-neutral-800" : ""
+              }`}
+            >
               Calendar
-            </div>
-
-            <div className="px-3 py-2 hover:bg-neutral-800 rounded">Chat</div>
-
-            <div className="px-3 py-2 hover:bg-neutral-800 rounded">
+            </Link>
+            <Link
+              to="/student/chat"
+              className={`px-3 py-2 rounded ${
+                isActive("/student/chat") ? "bg-neutral-800" : ""
+              }`}
+            >
+              Chat
+            </Link>
+            <Link
+              to="/student/semester-attendance"
+              className={`px-3 py-2 rounded ${
+                isActive("/student/semester-attendance") ? "bg-neutral-800" : ""
+              }`}
+            >
               Semester Attendance
-            </div>
+            </Link>
 
-            <div className="px-3 py-2 hover:bg-neutral-800 rounded">
+            <Link
+              to="/student/feedback"
+              className={`px-3 py-2 rounded ${
+                isActive("/student/feedback") ? "bg-neutral-800" : ""
+              }`}
+            >
               Feedback
-            </div>
+            </Link>
 
-            <div className="px-3 py-2 hover:bg-neutral-800 rounded">
+            <Link
+              to="/student/weekly-feedback"
+              className={`px-3 py-2 rounded ${
+                isActive("/student/weekly-feedback") ? "bg-neutral-800" : ""
+              }`}
+            >
               Weekly Subject Feedback
-            </div>
+            </Link>
 
-            <div className="px-3 py-2 hover:bg-neutral-800 rounded">
+            <Link
+              to="/student/apply-leave"
+              className={`px-3 py-2 rounded ${
+                isActive("/student/apply-leave") ? "bg-neutral-800" : ""
+              }`}
+            >
               Apply Leave
-            </div>
+            </Link>
 
             <div className="border-t border-neutral-800 my-2" />
 
-            <div className="px-3 py-2 hover:bg-neutral-800 rounded">
+            <Link
+              to="/student/profile"
+              className={`px-3 py-2 rounded ${
+                isActive("/student/profile") ? "bg-neutral-800" : ""
+              }`}
+            >
               View Profile
-            </div>
+            </Link>
 
-            <div className="px-3 py-2 hover:bg-neutral-800 rounded">Logout</div>
+            <Link to="/logout" className="px-3 py-2 rounded hover:bg-neutral-800">
+              Logout
+            </Link>
           </div>
         </div>
       )}

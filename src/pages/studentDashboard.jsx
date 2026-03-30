@@ -1,6 +1,5 @@
 import React from "react";
-
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 import TopCard from "../components/TopCard";
 import AttendanceCard from "../components/AttendanceCard";
 import ProfileCard from "../components/ProfileCard";
