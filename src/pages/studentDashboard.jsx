@@ -7,7 +7,8 @@ import SubjectsCard from "../components/SubjectsCard";
 import MentorsCard from "../components/MentorsCard";
 import AssignmentsCard from "../components/AssignmentsCard";
 import EventsCard from "../components/EventsCard";
-import SmallCard from "../components/SmallCard";
+import SmallCard from "../components/SmallCard"
+import { Link } from "react-router-dom";
 
 export default function StudentDashboard() {
   const data = localStorage.getItem("user");
@@ -46,7 +47,9 @@ export default function StudentDashboard() {
         />
 
         {/* EVENTS */}
-        <EventsCard events={user.events} />
+        <Link to="/events">
+          <EventsCard events={user.events} />
+        </Link>
 
         {/* BOTTOM CARDS */}
         <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-4">

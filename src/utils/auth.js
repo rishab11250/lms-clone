@@ -7,14 +7,14 @@ export const students = [
     mobile: "8469190331",
     university: "SUxCG 714",
 
-    image: "https://res.cloudinary.com/dhr1jtyi2/image/upload/v1770223273/IMG-20251109-WA0007_jybgmw.jpg",
+    image: "https://media.licdn.com/dms/image/v2/D4D03AQFg5uyoos6rHw/profile-displayphoto-scale_200_200/B4DZzHC.bXIAAY-/0/1772865974346?e=1776902400&v=beta&t=H6Rg0nEXHLfFRd3kpo3Oi3T-kJvzo9qCqhXf5pX9Lyg",
 
     attendance: {
       semester: "Semester 2",
-      present: 156,
-      total: 184,
+      present: 181,
+      total: 209,
       bonus: 20,
-      percentLabel: 96,
+      percentLabel: 97,
       startDate: "29/01/2026",
       endDate: "30/06/2026",
     },

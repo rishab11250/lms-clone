@@ -27,10 +27,10 @@ export default function Navbar() {
           <span className="text-white font-semibold">Student</span>
 
           {/* DESKTOP MENU */}
-          <nav className="hidden md:flex items-center gap-1 ml-2">
+          <nav className="hidden md:flex items-center gap-1 ml-2 z-50 relative">
             <Link
               to="/student"
-              className={`px-3 py-2 rounded-md text-sm font-medium ${
+              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                 isActive("/student")
                   ? "bg-neutral-800 text-white"
                   : "text-neutral-300 hover:bg-neutral-800 hover:text-white"
@@ -41,7 +41,7 @@ export default function Navbar() {
 
             <Link
               to="/student/attendance"
-              className={`px-3 py-2 rounded-md text-sm font-medium ${
+              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                 isActive("/student/attendance")
                   ? "bg-neutral-800 text-white"
                   : "text-neutral-300 hover:bg-neutral-800 hover:text-white"
@@ -52,7 +52,7 @@ export default function Navbar() {
 
             <Link
               to="/student/calendar"
-              className={`px-3 py-2 rounded-md text-sm font-medium ${
+              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                 isActive("/student/calendar")
                   ? "bg-neutral-800 text-white"
                   : "text-neutral-300 hover:bg-neutral-800 hover:text-white"
@@ -63,7 +63,7 @@ export default function Navbar() {
 
             <Link
               to="/student/chat"
-              className={`px-3 py-2 rounded-md text-sm font-medium ${
+              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                 isActive("/student/chat")
                   ? "bg-neutral-800 text-white"
                   : "text-neutral-300 hover:bg-neutral-800 hover:text-white"
@@ -73,37 +73,37 @@ export default function Navbar() {
             </Link>
 
             {/* MORE */}
-            <div className="relative group">
-              <button className="px-3 py-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded flex items-center gap-1">
+            <div className="relative group z-50">
+              <button className="px-3 py-2 text-sm text-neutral-300 hover:bg-neutral-800 hover:text-white rounded flex items-center gap-1 transition-colors">
                 More <ChevronDown size={16} />
               </button>
 
-              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-150 absolute left-0 mt-2 w-56 rounded-lg border border-neutral-800 bg-neutral-900 shadow-xl">
+              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-150 absolute left-0 mt-2 w-56 rounded-lg border border-neutral-800 bg-neutral-900 shadow-xl z-50">
                 <div className="p-2 space-y-1">
                   <Link
                     to="/student/semester-attendance"
-                    className="block px-3 py-2 text-sm hover:bg-neutral-800 rounded"
+                    className="block px-3 py-2 text-sm text-neutral-300 hover:bg-neutral-800 hover:text-white rounded transition-colors"
                   >
                     Semester Attendance
                   </Link>
 
                   <Link
                     to="/student/feedback"
-                    className="block px-3 py-2 text-sm hover:bg-neutral-800 rounded"
+                    className="block px-3 py-2 text-sm text-neutral-300 hover:bg-neutral-800 hover:text-white rounded transition-colors"
                   >
                     Feedback
                   </Link>
 
                   <Link
                     to="/student/weekly-feedback"
-                    className="block px-3 py-2 text-sm hover:bg-neutral-800 rounded"
+                    className="block px-3 py-2 text-sm text-neutral-300 hover:bg-neutral-800 hover:text-white rounded transition-colors"
                   >
                     Weekly Subject Feedback
                   </Link>
 
                   <Link
                     to="/student/apply-leave"
-                    className="block px-3 py-2 text-sm hover:bg-neutral-800 rounded"
+                    className="block px-3 py-2 text-sm text-neutral-300 hover:bg-neutral-800 hover:text-white rounded transition-colors"
                   >
                     Apply Leave
                   </Link>

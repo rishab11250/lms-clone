@@ -13,6 +13,7 @@ import StudentWeeklyFeedback from "./pages/studentWeeklyFeedback";
 import StudentApplyLeave from "./pages/studentApplyLeave";
 import StudentProfile from "./pages/studentProfile";
 import Logout from "./pages/logout";
+import Events from "./pages/allEvents";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Route path="/student/apply-leave" element={<StudentApplyLeave />} />
       <Route path="/student/profile" element={<StudentProfile />} />
       <Route path="/logout" element={<Logout />} />
+      <Route path="/events" element={<Events />} />
     </Routes>
   );
 }
